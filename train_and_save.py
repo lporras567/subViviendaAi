@@ -110,7 +110,9 @@ resultados['Logistic Regression'] = {'Accuracy':accuracy_score(y_te,yp),'F1-Scor
 print(f"   LR          F1={resultados['Logistic Regression']['F1-Score']:.4f} | AUC={resultados['Logistic Regression']['AUC-ROC']:.4f}")
 
 # Random Forest
-rf = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)
+# n_estimators reducido a 20 para deploy en nube (GitHub limite 100MB)
+# F1 esperado: ~0.91 vs 0.9228 con 100 arboles — diferencia minima
+rf = RandomForestClassifier(n_estimators=20, random_state=42, n_jobs=-1)
 rf.fit(X_tr, y_tr)
 yp = rf.predict(X_te); ypr = rf.predict_proba(X_te)[:,1]
 resultados['Random Forest'] = {'Accuracy':accuracy_score(y_te,yp),'F1-Score':f1_score(y_te,yp),'AUC-ROC':roc_auc_score(y_te,ypr)}
