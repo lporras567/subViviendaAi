@@ -19,7 +19,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-API_URL = "http://localhost:8001"
+API_URL = "https://subviviendaai.onrender.com"
 
 # ── Paleta de colores ─────────────────────────────────────────────────
 COL = {
