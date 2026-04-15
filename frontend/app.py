@@ -143,7 +143,7 @@ def get_municipios(departamento):
 
 def check_api():
     try:
-        r = requests.get(f"{API_URL}/health", timeout=3)
+        r = requests.get(f"{API_URL}/", timeout=3)
         return r.status_code == 200
     except:
         return False
